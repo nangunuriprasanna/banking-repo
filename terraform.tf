@@ -129,7 +129,7 @@ resource "aws_instance" "Prod-Server" {
  ami = "ami-0ef82eeba2c7a0eeb"
  instance_type = "t2.micro"
  availability_zone = "ap-south-1b"
- key_name = "chefkeypair"
+ key_name = "prasanna"
  network_interface {
  device_index = 0
  network_interface_id = aws_network_interface.proj-ni.id
@@ -137,10 +137,6 @@ resource "aws_instance" "Prod-Server" {
  user_data  = <<-EOF
  #!/bin/bash
      sudo apt-get update -y
-     sudo apt install docker.io -y
-     sudo systemctl enable docker
-     sudo docker run -itd -p 8085:8081 vikuldocker/akshatinsurance:1.0
-     sudo docker start $(docker ps -aq)
  EOF
  tags = {
  Name = "Prod-Server"
